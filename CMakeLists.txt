@@ -23,6 +23,7 @@ set(CMAKE_SHARED_LIBRARY_PREFIX "")
 
 ModuleImportAll("thirdparty")
 
+InterfaceImport("libdmopex" "include" "")
 if(PROJECT_IS_TOP_LEVEL)
     ExeImport("test" "dmtest")
 endif()
