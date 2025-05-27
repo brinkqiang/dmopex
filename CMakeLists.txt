@@ -23,10 +23,8 @@ set(CMAKE_SHARED_LIBRARY_PREFIX "")
 
 ModuleImportAll("thirdparty")
 
-LibImport("libdmopex" "src/libdmopex")
-
 if(PROJECT_IS_TOP_LEVEL)
-    ExeImport("test" "libdmopex;dmtest")
+    ExeImport("test" "dmtest")
 endif()
 
 AddInstall("libdmopex" "${CMAKE_CURRENT_SOURCE_DIR}/include")

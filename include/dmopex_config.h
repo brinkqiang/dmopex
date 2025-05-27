@@ -19,32 +19,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#include "libdmopex_impl.h"
-#include "dmformat.h"
+#ifndef __DMOPEX_CONFIG_H_INCLUDE__
+#define __DMOPEX_CONFIG_H_INCLUDE__
 
-Cdmopex_impl::Cdmopex_impl()
-{
+#define DMOPEX_VERSION "1.0.1"
+/* #undef USE_DMOPEX */
 
-}
-
-Cdmopex_impl::~Cdmopex_impl()
-{
-
-}
-
-void DMAPI Cdmopex_impl::Release(void)
-{
-    delete this;
-}
-
-void DMAPI Cdmopex_impl::Test(void)
-{
-    fmt::print("{}\n", "PROJECT_NAME = dmopex");
-    fmt::print("{}\n", "PROJECT_NAME_UP = DMOPEX");
-    fmt::print("{}\n", "PROJECT_NAME_LO = dmopex");
-}
-
-Idmopex* DMAPI dmopexGetModule()
-{
-    return new Cdmopex_impl();
-}
+#endif // __DMOPEX_CONFIG_H_INCLUDE__
