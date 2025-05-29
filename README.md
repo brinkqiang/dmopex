@@ -45,8 +45,8 @@ Copyright (c) 2013-2018 brinkqiang (brink.qiang@gmail.com)
 
 ## 要求
 
-* C++17 或更高版本 (主要因为 `detail::print_tuple` 中使用了 C++17 的折叠表达式，以及 `std::tuple_size_v` 等类型特性)。
-    * 如果需要兼容旧版 C++ (如 C++11/14)，`detail::print_tuple` 函数需要修改为递归模板实现。
+* C++17
+* 更高的C++版本建议使用operator<=> 方式实现
 
 ## 如何使用
 
