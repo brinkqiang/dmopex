@@ -21,8 +21,9 @@ Copyright (c) 2013-2018 brinkqiang (brink.qiang@gmail.com)
 [win-badge]: https://github.com/brinkqiang/dmopex/workflows/win/badge.svg "win build status"
 [win-link]:  https://github.com/brinkqiang/dmopex/actions/workflows/win.yml "win build status"
 
+## 项目说明
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) `dmopex` 是一个轻量级的 C++ 头文件库，旨在通过 Curiously Recurring Template Pattern (CRTP) 为任何可以转换为 `std::tuple` 并可以从 `std::tuple`构造的自定义结构体，自动提供常用的算术和比较操作符。
+ `dmopex` 是一个轻量级的 C++ 头文件库，旨在通过 Curiously Recurring Template Pattern (CRTP) 为任何可以转换为 `std::tuple` 并可以从 `std::tuple`构造的自定义结构体，自动提供常用的算术和比较操作符。
 
 ## 解决的问题
 
