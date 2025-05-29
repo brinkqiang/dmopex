@@ -26,7 +26,7 @@ Copyright (c) 2013-2018 brinkqiang (brink.qiang@gmail.com)
 
 ## 解决的问题
 
-在 C++ 中，为自定义的结构体（尤其是那些行为类似 POD 或元组的结构体）重载大量的算术操作符（如 `+`, `-`, `+=`, `-=`) 和比较操作符（`==`, `!=`）以及流输出操作符（`<<`）是一项重复且繁琐的任务。`ITupleOperators` 通过泛型编程简化了这一过程，只需用户提供其结构体与 `std::tuple` 之间的转换方法即可。
+在 C++ 中，为自定义的结构体（尤其是那些行为类似 POD 或元组的结构体）重载大量的算术操作符（如 `+`, `-`, `+=`, `-=`) 和比较操作符（`==`, `!=`）以及流输出操作符（`<<`）是一项重复且繁琐的任务。`IDMOperators` 通过泛型编程简化了这一过程，只需用户提供其结构体与 `std::tuple` 之间的转换方法即可。
 
 ## 特性
 
@@ -41,7 +41,7 @@ Copyright (c) 2013-2018 brinkqiang (brink.qiang@gmail.com)
     * 相等比较: `operator==`
     * 不等比较: `operator!=`
     * 流输出: `operator<<` (用于 `std::ostream`)
-* **辅助宏**：提供 `DEFINE_TUPLE_STRUCT` 宏以快速定义所需的转换函数。
+* **辅助宏**：提供 `DEFINE_STRUCT_OPERATORS` 宏以快速定义所需的转换函数。
 
 ## 要求
 
@@ -60,7 +60,7 @@ Copyright (c) 2013-2018 brinkqiang (brink.qiang@gmail.com)
     * 在你的结构体内部，你需要提供两个核心部分：
         1.  一个 `to_tuple()` const 成员函数，返回一个包含结构体成员的 `std::tuple`。
         2.  一个静态成员函数 `from_tuple(const SomeTupleType& t)`，它接受一个元组并返回 `MyStruct` 的一个实例。
-    * 或者，你可以使用 `DEFINE_TUPLE_STRUCT(StructName, ...members)` 宏来自动生成这两个部分。
+    * 或者，你可以使用 `DEFINE_STRUCT_OPERATORS(StructName, ...members)` 宏来自动生成这两个部分。
 
 ## 示例
 
@@ -77,7 +77,7 @@ struct Point2D : public IDMOperators<Point2D> {
     Point2D(double x_ = 0.0, double y_ = 0.0) : x(x_), y(y_) {}
 
     // 使用宏来定义 to_tuple 和 from_tuple
-    DEFINE_TUPLE_STRUCT(Point2D, x, y)
+    DEFINE_STRUCT_OPERATORS(Point2D, x, y)
 };
 
 // 定义一个颜色结构体
@@ -86,7 +86,7 @@ struct Color : public IDMOperators<Color> {
 
     Color(int r_ = 0, int g_ = 0, int b_ = 0, int a_ = 255) : r(r_), g(g_), b(b_), a(a_) {}
 
-    DEFINE_TUPLE_STRUCT(Color, r, g, b, a)
+    DEFINE_STRUCT_OPERATORS(Color, r, g, b, a)
 };
 
 
