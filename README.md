@@ -78,11 +78,6 @@ struct Point2D : public IDMOperators<Point2D> {
 
     // 使用宏来定义 to_tuple 和 from_tuple
     DEFINE_TUPLE_STRUCT(Point2D, x, y)
-
-    // (可选) 为 Google Test 提供友好的打印函数
-    // friend void PrintTo(const Point2D& point, ::std::ostream* os) {
-    //     *os << "Point2D(" << point.x << ", " << point.y << ")";
-    // }
 };
 
 // 定义一个颜色结构体
