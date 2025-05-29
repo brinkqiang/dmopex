@@ -21,9 +21,6 @@
 #ifndef __DMOPEX_H_INCLUDE__
 #define __DMOPEX_H_INCLUDE__
 
-#include "dmos.h" // dmos.h已经处理平台头文件, 以及相关宏定义
-#include "dmfix_win_utf8.h" // 处理 win平台utf8问题
-
 #define __PP_OPERATOR_DEF_COMMON(TYPE) \
     inline TYPE operator+(TYPE& first, TYPE& second)\
     {\
