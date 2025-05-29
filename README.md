@@ -1,4 +1,4 @@
-# dmopex: C++元组操作符泛型实现
+# dmopex: C++结构体操作符泛型实现
 
 Copyright (c) 2013-2018 brinkqiang (brink.qiang@gmail.com)
 
