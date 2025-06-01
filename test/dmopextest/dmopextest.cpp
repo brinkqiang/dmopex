@@ -133,3 +133,38 @@ TEST_F(DmOpExTest, ColorOperations) {
     c_temp -= c2;
     EXPECT_EQ(c_temp, c_diff);
 }
+
+TEST_F(DmOpExTest, readme)
+{
+    Point2D p1{ 1.5, 2.5 };
+    Point2D p2{ 3.0, 4.0 };
+    Point2D p1_copy{ 1.5, 2.5 };
+
+    // 测试算术运算
+    Point2D p_sum = p1 + p2;
+    std::cout << "p1 + p2 = " << p_sum << std::endl; // 预期: (4.5, 6.5)
+
+    Point2D p_diff = p2 - p1;
+    std::cout << "p2 - p1 = " << p_diff << std::endl; // 预期: (1.5, 1.5)
+
+    p1 += p2;
+    std::cout << "p1 after += p2: " << p1 << std::endl; // 预期: (4.5, 6.5) (p1 自身被修改)
+
+    // 测试比较运算
+    std::cout << "p1 == p1_copy: " << (p1_copy == Point2D{ 1.5, 2.5 } ? "true" : "false") << std::endl; // 预期: true (注意 p1 已被修改)
+    // 应该用未修改的 p1_copy 来比较
+    std::cout << "Point2D{1.5, 2.5} == p1_copy: " << (Point2D{ 1.5, 2.5 } == p1_copy ? "true" : "false") << std::endl; // 预期: true
+    std::cout << "p1 == p2: " << (p1 == p2 ? "true" : "false") << std::endl; // 预期: false (p1 是 (4.5, 6.5), p2 是 (3.0, 4.0))
+    std::cout << "p1_copy != p2: " << (p1_copy != p2 ? "true" : "false") << std::endl; // 预期: true
+
+    Color red{ 255, 0, 0 };
+    Color green{ 0, 255, 0 };
+    Color yellow = red + green; // 注意：元素级相加，alpha 也会相加
+    std::cout << "Yellow (red + green): " << yellow << std::endl; // 预期: (255, 255, 0, 510) (alpha=255+255)
+
+    Color c_test1{ 10,20,30,40 };
+    Color c_test2{ 10,20,30,40 };
+    Color c_test3{ 1,2,3,4 };
+    std::cout << "c_test1 == c_test2: " << (c_test1 == c_test2 ? "true" : "false") << std::endl; // 预期: true
+    std::cout << "c_test1 != c_test3: " << (c_test1 != c_test3 ? "true" : "false") << std::endl; // 预期: true
+}
