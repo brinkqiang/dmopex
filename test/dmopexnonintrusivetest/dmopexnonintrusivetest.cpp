@@ -266,3 +266,108 @@ TEST_F(DmOpExTest, readme)
     EXPECT_EQ(c_test1, c_test2);
     EXPECT_NE(c_test1, c_test3);
 }
+
+// Define the struct with 64 members
+struct MaxParamsStruct {
+    int m1, m2, m3, m4, m5, m6, m7, m8, m9, m10;
+    int m11, m12, m13, m14, m15, m16, m17, m18, m19, m20;
+    int m21, m22, m23, m24, m25, m26, m27, m28, m29, m30;
+    int m31, m32, m33, m34, m35, m36, m37, m38, m39, m40;
+    int m41, m42, m43, m44, m45, m46, m47, m48, m49, m50;
+    int m51, m52, m53, m54, m55, m56, m57, m58, m59, m60;
+    int m61, m62, m63, m64;
+};
+
+// Enable non-intrusive operators for MaxParamsStruct
+DEFINE_NON_INTRUSIVE_OPERATORS_FOR(MaxParamsStruct,
+    m1, m2, m3, m4, m5, m6, m7, m8, m9, m10,
+    m11, m12, m13, m14, m15, m16, m17, m18, m19, m20,
+    m21, m22, m23, m24, m25, m26, m27, m28, m29, m30,
+    m31, m32, m33, m34, m35, m36, m37, m38, m39, m40,
+    m41, m42, m43, m44, m45, m46, m47, m48, m49, m50,
+    m51, m52, m53, m54, m55, m56, m57, m58, m59, m60,
+    m61, m62, m63, m64
+)
+
+// Helper function to set all members of MaxParamsStruct to a specific value
+void InitializeStruct(MaxParamsStruct& s, int value) {
+    s.m1 = value; s.m2 = value; s.m3 = value; s.m4 = value; s.m5 = value;
+    s.m6 = value; s.m7 = value; s.m8 = value; s.m9 = value; s.m10 = value;
+    s.m11 = value; s.m12 = value; s.m13 = value; s.m14 = value; s.m15 = value;
+    s.m16 = value; s.m17 = value; s.m18 = value; s.m19 = value; s.m20 = value;
+    s.m21 = value; s.m22 = value; s.m23 = value; s.m24 = value; s.m25 = value;
+    s.m26 = value; s.m27 = value; s.m28 = value; s.m29 = value; s.m30 = value;
+    s.m31 = value; s.m32 = value; s.m33 = value; s.m34 = value; s.m35 = value;
+    s.m36 = value; s.m37 = value; s.m38 = value; s.m39 = value; s.m40 = value;
+    s.m41 = value; s.m42 = value; s.m43 = value; s.m44 = value; s.m45 = value;
+    s.m46 = value; s.m47 = value; s.m48 = value; s.m49 = value; s.m50 = value;
+    s.m51 = value; s.m52 = value; s.m53 = value; s.m54 = value; s.m55 = value;
+    s.m56 = value; s.m57 = value; s.m58 = value; s.m59 = value; s.m60 = value;
+    s.m61 = value; s.m62 = value; s.m63 = value; s.m64 = value;
+}
+
+// Test fixture for MaxParamsStruct tests
+class DMOPEX_MaxParamsTest : public ::testing::Test {
+protected:
+    MaxParamsStruct s1;
+    MaxParamsStruct s2;
+    MaxParamsStruct expected_s;
+};
+
+TEST_F(DMOPEX_MaxParamsTest, AdditionOperator) {
+    InitializeStruct(s1, 1); // All members of s1 = 1
+    InitializeStruct(s2, 2); // All members of s2 = 2
+    InitializeStruct(expected_s, 3); // All members of expected_s = 3
+
+    MaxParamsStruct sum = s1 + s2;
+    EXPECT_EQ(sum, expected_s);
+}
+
+TEST_F(DMOPEX_MaxParamsTest, EqualityOperators) {
+    InitializeStruct(s1, 5);
+    InitializeStruct(s2, 5);
+    MaxParamsStruct s3;
+    InitializeStruct(s3, 10);
+
+    EXPECT_EQ(s1, s2);
+    EXPECT_NE(s1, s3);
+}
+
+TEST_F(DMOPEX_MaxParamsTest, CompoundAdditionOperator) {
+    InitializeStruct(s1, 1);
+    InitializeStruct(s2, 2);
+    InitializeStruct(expected_s, 3);
+
+    s1 += s2;
+    EXPECT_EQ(s1, expected_s);
+}
+
+
+TEST_F(DMOPEX_MaxParamsTest, StreamInsertionOperator) {
+    InitializeStruct(s1, 7);
+
+    std::ostringstream oss;
+    oss << s1;
+
+    std::string expected_output = "(";
+    for (int i = 0; i < 64; ++i) {
+        expected_output += std::to_string(7);
+        if (i < 63) {
+            expected_output += ", ";
+        }
+    }
+    expected_output += ")";
+
+    EXPECT_EQ(oss.str(), expected_output);
+}
+
+// You can add more tests for other operators (-, *, /, -=, *=, /=)
+// Example for subtraction:
+TEST_F(DMOPEX_MaxParamsTest, SubtractionOperator) {
+    InitializeStruct(s1, 10);
+    InitializeStruct(s2, 3);
+    InitializeStruct(expected_s, 7);
+
+    MaxParamsStruct difference = s1 - s2;
+    EXPECT_EQ(difference, expected_s);
+}
