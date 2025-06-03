@@ -202,7 +202,7 @@ template<typename T>
 struct struct_access_traits;
 
 // --- Macro to define the traits specialization for a given struct ---
-#define DEFINE_NON_INTRUSIVE_OPERATORS_FOR(StructName, ...) \
+#define DEFINE_STRUCT_OPERATORS_NON_INTRUSIVE(StructName, ...) \
 template<> \
 struct struct_access_traits<StructName> { \
     static constexpr auto to_tuple(const StructName& obj) { \

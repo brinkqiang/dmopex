@@ -19,7 +19,7 @@ struct Point2D {
     Point2D(double x_, double y_) : x(x_), y(y_) {}
 };
 // 在结构体外部为 Point2D 定义操作符
-DEFINE_NON_INTRUSIVE_OPERATORS_FOR(Point2D, x, y);
+DEFINE_STRUCT_OPERATORS_NON_INTRUSIVE(Point2D, x, y);
 
 struct Vector3D {
     double x, y, z;
@@ -28,7 +28,7 @@ struct Vector3D {
     Vector3D(double x_, double y_, double z_) : x(x_), y(y_), z(z_) {}
 };
 // 在结构体外部为 Vector3D 定义操作符
-DEFINE_NON_INTRUSIVE_OPERATORS_FOR(Vector3D, x, y, z);
+DEFINE_STRUCT_OPERATORS_NON_INTRUSIVE(Vector3D, x, y, z);
 
 struct Color {
     int r, g, b, a;
@@ -37,7 +37,7 @@ struct Color {
     Color(int r_, int g_, int b_, int a_ = 255) : r(r_), g(g_), b(b_), a(a_) {}
 };
 // 在结构体外部为 Color 定义操作符
-DEFINE_NON_INTRUSIVE_OPERATORS_FOR(Color, r, g, b, a);
+DEFINE_STRUCT_OPERATORS_NON_INTRUSIVE(Color, r, g, b, a);
 
 class DmOpExTest : public testing::Test
 {
@@ -279,7 +279,7 @@ struct MaxParamsStruct {
 };
 
 // Enable non-intrusive operators for MaxParamsStruct
-DEFINE_NON_INTRUSIVE_OPERATORS_FOR(MaxParamsStruct,
+DEFINE_STRUCT_OPERATORS_NON_INTRUSIVE(MaxParamsStruct,
     m1, m2, m3, m4, m5, m6, m7, m8, m9, m10,
     m11, m12, m13, m14, m15, m16, m17, m18, m19, m20,
     m21, m22, m23, m24, m25, m26, m27, m28, m29, m30,
