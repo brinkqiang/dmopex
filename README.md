@@ -75,7 +75,7 @@ Copyright (c) 2013-2018 brinkqiang (brink.qiang@gmail.com)
 #include <string> // 如果你的结构体成员包含 std::string
 
 // 定义一个二维点结构体
-struct Point2D : public IDMOperators<Point2D> {
+struct Point2D {
     double x, y;
 
     // 默认构造函数和带参构造函数
@@ -86,7 +86,7 @@ struct Point2D : public IDMOperators<Point2D> {
 };
 
 // 定义一个颜色结构体
-struct Color : public IDMOperators<Color> {
+struct Color {
     int r, g, b, a;
 
     Color(int r_ = 0, int g_ = 0, int b_ = 0, int a_ = 255) : r(r_), g(g_), b(b_), a(a_) {}
