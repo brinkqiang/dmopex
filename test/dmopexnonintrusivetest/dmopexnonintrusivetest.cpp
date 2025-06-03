@@ -17,7 +17,6 @@ struct Point2D {
 
     Point2D() = default;
     Point2D(double x_, double y_) : x(x_), y(y_) {}
-    // DEFINE_STRUCT_OPERATORS(Point2D, x, y) // 已移除
 };
 // 在结构体外部为 Point2D 定义操作符
 DEFINE_NON_INTRUSIVE_OPERATORS_FOR(Point2D, x, y);
@@ -27,7 +26,6 @@ struct Vector3D {
 
     Vector3D() = default;
     Vector3D(double x_, double y_, double z_) : x(x_), y(y_), z(z_) {}
-    // DEFINE_STRUCT_OPERATORS(Vector3D, x, y, z) // 已移除
 };
 // 在结构体外部为 Vector3D 定义操作符
 DEFINE_NON_INTRUSIVE_OPERATORS_FOR(Vector3D, x, y, z);
@@ -37,7 +35,6 @@ struct Color {
 
     Color() = default;
     Color(int r_, int g_, int b_, int a_ = 255) : r(r_), g(g_), b(b_), a(a_) {}
-    // DEFINE_STRUCT_OPERATORS(Color, r, g, b, a) // 已移除
 };
 // 在结构体外部为 Color 定义操作符
 DEFINE_NON_INTRUSIVE_OPERATORS_FOR(Color, r, g, b, a);
