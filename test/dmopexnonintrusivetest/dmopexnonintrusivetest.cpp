@@ -1,8 +1,5 @@
 ﻿#include "dmopex_non_intrusive.h" // 使用新的非侵入式头文件
-#include "gtest.h"         // 假设 gtest.h 是正确的路径
-
-// 前置声明，如果 dmopex_non_intrusive.h 中没有包含 iostream
-// #include <iostream> // 通常 gtest 会包含
+#include "gtest.h"
 
 class env_dmopex
 {
